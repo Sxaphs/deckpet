@@ -12,6 +12,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   globalPermission: { ...DEFAULT_POLICY },
   backends: [],
   characters: [],
+  activeCharId: null,
   reminders: [],
   disabledReminderCategories: [],
 };

@@ -147,8 +147,10 @@ async function bootstrap(): Promise<void> {
   const screenW = () => workArea.width;
   const screenH = () => workArea.y + workArea.height; // 物理地板 = 工作区底（任务栏上边）
 
-  // ── 角色初始化：随机分布在屏幕底部 ──
+  // ── 角色初始化：只上屏主桌宠（activeCharId，缺省为列表第一个，全新安装即奶龙）──
   const chars = await api.listCharacters();
+  const { activeCharId } = await api.getSettings();
+  const activeId = activeCharId ?? chars[0]?.id;
   const views: PetView[] = [];
   const byId = new Map<string, PetView>();
   const activeReq = new Map<string, string>(); // charId → 进行中的 reqId
@@ -329,7 +331,8 @@ async function bootstrap(): Promise<void> {
   }
 
   for (const c of chars) {
-    await addView(c);
+    // 启动只显示主桌宠；其他角色可在使用中新增（导入/协作），下次启动仍只显示它
+    if (c.id === activeId) await addView(c);
   }
 
   // 角色热刷新：导入照片 / 删除 / 重新生成素材后免重启生效
@@ -486,7 +489,8 @@ async function bootstrap(): Promise<void> {
     bar: (charId: string) => {
       const v = byId.get(charId);
       if (v) {
-        Object.assign(v.pet, { y: 60, vy: 0, vx: 0, support: { type: 'top' }, mode: 'bar_hang', modeElapsedMs: 0 });
+        // 居中+身体完整在屏幕内（y 为脚底锚点，需大于一个身位）
+        Object.assign(v.pet, { x: Math.round(window.innerWidth / 2), y: 240, vy: 0, vx: 0, support: { type: 'top' }, mode: 'bar_hang', modeElapsedMs: 0 });
       }
     },
     // 当前帧调试信息

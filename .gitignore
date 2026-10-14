@@ -3,6 +3,8 @@ dist/
 release/
 .runtime/
 smoke-*.png
+promo/
+wechat-article.md
 assets/photos/
 assets/cutouts/
 # 素材可重新生成，不入库（占位：npm start 前由设置页导入照片或手动跑 pipeline 生成）

@@ -115,6 +115,8 @@ export interface AppSettings {
   globalPermission: PermissionPolicy;
   backends: BackendConfig[];
   characters: CharacterConfig[];
+  /** 启动时默认上屏的主桌宠（null = 角色列表第一个；启动只显示这一只） */
+  activeCharId?: string | null;
   /** 循环提醒任务 */
   reminders: ReminderTask[];
   /** 被整体关闭的提醒分类 */

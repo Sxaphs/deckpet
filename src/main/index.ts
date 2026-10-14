@@ -156,12 +156,13 @@ if (!app.requestSingleInstanceLock()) {
     app.on('will-quit', () => stopPolling());
 
     // 首开默认角色：内置奶龙直接上屏
+    const hadCharacters = store.load().characters.length > 0;
     ensureDefaultCharacter(store, logger);
     // 素材目录丢失的角色回退内置奶龙（防止火柴人占位）
     ensureSpritesIntact(store, logger);
 
-    // 首次运行（还没有任何角色）：自动打开设置页引导配置后端/导入照片
-    if (store.load().characters.length === 0) {
+    // 首次运行（原本没有任何角色）：自动打开设置页引导配置后端/导入照片
+    if (!hadCharacters) {
       openSettingsWindow();
     }
 
@@ -212,6 +213,34 @@ if (!app.requestSingleInstanceLock()) {
             }
           } catch (err) {
             console.error(`[smoke] 失败: ${err}`);
+          }
+          app.quit();
+        }, 3000);
+      });
+    }
+
+    // 演示片录制：DECKPET_SMOKE_VIDEO=<帧输出目录> 时，按固定帧率连拍
+    // DECKPET_SMOKE_JS 驱动动作，DECKPET_SMOKE_DELAY 动作提前量，
+    // DECKPET_SMOKE_DURATION 录制时长 ms（默认 5000），DECKPET_SMOKE_FPS（默认 10）
+    const smokeVideo = process.env.DECKPET_SMOKE_VIDEO;
+    if (smokeVideo) {
+      petWin.webContents.once('did-finish-load', () => {
+        setTimeout(async () => {
+          try {
+            fs.mkdirSync(smokeVideo, { recursive: true });
+            const js = process.env.DECKPET_SMOKE_JS;
+            if (js) await petWin.webContents.executeJavaScript(js);
+            await new Promise((r2) => setTimeout(r2, Number(process.env.DECKPET_SMOKE_DELAY ?? 1000)));
+            const fps = Number(process.env.DECKPET_SMOKE_FPS ?? 10);
+            const frames = Math.round((Number(process.env.DECKPET_SMOKE_DURATION ?? 5000) / 1000) * fps);
+            for (let i = 0; i < frames; i++) {
+              const img = await petWin.webContents.capturePage();
+              fs.writeFileSync(path.join(smokeVideo, `f${String(i).padStart(4, '0')}.png`), img.toPNG());
+              await new Promise((r2) => setTimeout(r2, 1000 / fps));
+            }
+            console.log(`[smoke] 录制完成: ${frames} 帧 → ${smokeVideo}`);
+          } catch (err) {
+            console.error(`[smoke] 录制失败: ${err}`);
           }
           app.quit();
         }, 3000);

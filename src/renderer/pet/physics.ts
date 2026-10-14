@@ -16,7 +16,7 @@ export interface Bounds {
 const G = 2600; // 重力加速度 px/s²
 const RESTITUTION = 0.35; // 边界反弹恢复系数
 const FRICTION = 6; // 着地时的水平摩擦（指数衰减系数）
-const BAR_HANG_OFFSET = 56; // 单杠悬挂时脚底距工作区顶的距离
+const BAR_HANG_OFFSET = 200; // 单杠悬挂时脚底距工作区顶的距离：约一个身位（96px 帧 × PET_SCALE 2）+余量，保证全身挂在屏幕内
 const CEIL_MARGIN = 40; // 上升封顶余量（脚底不越过 顶边+该值）
 
 /** 按 hwnd 找未最小化的窗口矩形 */

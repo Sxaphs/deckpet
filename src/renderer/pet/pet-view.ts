@@ -244,6 +244,8 @@ export class PetView {
     if (nearTop) {
       this.pet = {
         ...this.pet,
+        // 身体完整挂在顶边之下（y 是脚底锚点，不修正会整只爬出屏幕顶）
+        y: this.boundsTop + spriteH,
         mode: 'bar_hang',
         modeElapsedMs: 0,
         vx: 0,

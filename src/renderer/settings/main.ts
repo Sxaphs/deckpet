@@ -298,6 +298,7 @@ function characterCard(c: CharacterConfig, backends: BackendConfig[]): HTMLEleme
 
   const saveBtn = btn('保存', 'btn primary');
   const replaceBtn = btn('上传照片替换形象');
+  const activeBtn = btn('设为默认启动');
   const delBtn = btn('删除', 'btn danger');
 
   function collect() {
@@ -340,6 +341,17 @@ function characterCard(c: CharacterConfig, backends: BackendConfig[]): HTMLEleme
     }
   };
 
+  activeBtn.onclick = async () => {
+    try {
+      const s = await api().getSettings();
+      s.activeCharId = c.id;
+      await api().saveSettings(s);
+      setFlash('ok', `「${c.name}」已设为默认启动桌宠，下次启动只显示它。`);
+    } catch (err) {
+      setFlash('err', `设置失败：${String(err)}`);
+    }
+  };
+
   delBtn.onclick = async () => {
     if (!confirm(`确定删除角色「${c.name}」？素材目录不删除，可手动清理。`)) return;
     try {
@@ -360,7 +372,7 @@ function characterCard(c: CharacterConfig, backends: BackendConfig[]): HTMLEleme
     field('权限模式', permSel),
   );
   const actions = el('div', 'actions');
-  actions.append(saveBtn, replaceBtn, delBtn);
+  actions.append(saveBtn, replaceBtn, activeBtn, delBtn);
   card.append(actions);
   return card;
 }
