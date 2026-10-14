@@ -1,0 +1,39 @@
+{
+  "name": "deckpet",
+  "version": "0.1.0",
+  "description": "Windows desktop pets as a graphical front-end for Agent CLIs (ACP-first, multi-backend)",
+  "type": "module",
+  "main": "dist/main/main/index.js",
+  "scripts": {
+    "build": "npm run build:core && npm run build:main && npm run build:renderer && npm run build:pipeline",
+    "build:pipeline": "tsc -p tsconfig.pipeline.json",
+    "build:core": "tsc -p tsconfig.core.json",
+    "build:main": "tsc -p tsconfig.main.json",
+    "build:renderer": "esbuild src/renderer/pet/main.ts --bundle --format=iife --outfile=dist/renderer/pet/bundle.js && esbuild src/renderer/settings/main.ts --bundle --format=iife --outfile=dist/renderer/settings/bundle.js && esbuild src/renderer/reader/main.ts --bundle --format=iife --outfile=dist/renderer/reader/bundle.js && node scripts/copy-static.mjs",
+    "cli": "npm run build:core && node dist/core/cli/index.js",
+    "test": "vitest run",
+    "start": "npm run build && electron .",
+    "pack": "npm run build && electron-builder"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "highlight.js": "^11.10.0",
+    "koffi": "^2.10.0",
+    "markdown-it": "^14.1.0"
+  },
+  "devDependencies": {
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^22.7.0",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.0",
+    "esbuild": "^0.24.0",
+    "typescript": "^5.6.0",
+    "vitest": "^3.0.0"
+  },
+  "allowScripts": {
+    "electron": true,
+    "esbuild@0.24.2": true,
+    "esbuild@0.28.2": true,
+    "koffi@2.16.3": true
+  }
+}

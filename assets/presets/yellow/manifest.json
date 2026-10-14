@@ -1,0 +1,198 @@
+{
+  "characterId": "preset-yellow",
+  "source": "placeholder",
+  "generatedAt": "2026-10-11T02:54:30.417131+00:00",
+  "frames": {
+    "crawl": [
+      {
+        "file": "crawl-0.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "crawl-1.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "crawl-2.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "crawl-3.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      }
+    ],
+    "climb": [
+      {
+        "file": "climb-0.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "climb-1.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "climb-2.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "climb-3.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      }
+    ],
+    "hang": [
+      {
+        "file": "hang-0.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "hang-1.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      }
+    ],
+    "roll": [
+      {
+        "file": "roll-0.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "roll-1.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "roll-2.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "roll-3.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      }
+    ],
+    "rest": [
+      {
+        "file": "rest-0.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      },
+      {
+        "file": "rest-1.png",
+        "width": 96,
+        "height": 96,
+        "durationMs": 120
+      }
+    ],
+    "wave": [
+      {
+        "file": "wave-0.png",
+        "width": 96,
+        "height": 96
+      },
+      {
+        "file": "wave-1.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "jump": [
+      {
+        "file": "jump-0.png",
+        "width": 96,
+        "height": 96
+      },
+      {
+        "file": "jump-1.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "sit_sad": [
+      {
+        "file": "sit_sad-0.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "think": [
+      {
+        "file": "think-0.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "scared": [
+      {
+        "file": "scared-0.png",
+        "width": 96,
+        "height": 96
+      },
+      {
+        "file": "scared-1.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "fall_sit": [
+      {
+        "file": "fall_sit-0.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "get_up": [
+      {
+        "file": "get_up-0.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "talk_open": [
+      {
+        "file": "talk_open-0.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "talk_half": [
+      {
+        "file": "talk_half-0.png",
+        "width": 96,
+        "height": 96
+      }
+    ],
+    "talk_closed": [
+      {
+        "file": "talk_closed-0.png",
+        "width": 96,
+        "height": 96
+      }
+    ]
+  }
+}

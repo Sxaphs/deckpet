@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "dist/pipeline",
+    "rootDir": "pipeline",
+    "types": ["node"]
+  },
+  "include": ["pipeline/gen_frames.ts"]
+}

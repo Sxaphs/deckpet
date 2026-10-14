@@ -1,0 +1,12 @@
+node_modules/
+dist/
+release/
+.runtime/
+smoke-*.png
+assets/photos/
+assets/cutouts/
+# 素材可重新生成，不入库（占位：npm start 前由设置页导入照片或手动跑 pipeline 生成）
+assets/sprites/
+pipeline/.venv/
+pipeline/__pycache__/
+*.log

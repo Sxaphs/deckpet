@@ -1,0 +1,24 @@
+appId: com.deckpet.app
+productName: DeckPet
+directories:
+  output: release
+files:
+  - dist/**/*
+  - assets/tray.png
+  - assets/icon.png
+  - assets/presets/**/*
+  - pipeline/**/*
+  - package.json
+asar: true
+asarUnpack:
+  - pipeline/**/*
+  - dist/pipeline/**/*
+  - assets/presets/**/*
+win:
+  target:
+    - target: portable # 单 exe 免安装
+      arch: [x64]
+  icon: assets/icon.png
+# nsis 单 exe 安装包备选：把 target 改为 nsis 即可
+portable:
+  artifactName: DeckPet-${version}-portable.exe
